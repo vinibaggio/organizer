@@ -1,0 +1,14 @@
+This little tool is under construction. It was made out of boredom during my travel to the city where I work.
+
+This is supposed to help you organize your files using a yaml file, something like this:
+
+rules:
+  my_pictures:
+    pattern: (\\w*)\\.jpg
+    folder: ~/Pictures
+  my_trip:
+    pattern: Trip.*jpg
+    folder: ~/Pictures/My Trip
+  my_series:
+    pattern: ^([\\w\\s]*)\\.s(\\d{2}).*\\.avi$
+    folder: ~/Series/$1/Season $2/
