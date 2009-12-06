@@ -4,11 +4,11 @@ This is supposed to help you organize your files using a yaml file, something li
 
 rules:
   my_pictures:
-    pattern: (\\w*)\\.jpg
+    pattern: (\w*)\.jpg
     folder: ~/Pictures
   my_trip:
     pattern: Trip.*jpg
     folder: ~/Pictures/My Trip
   my_series:
-    pattern: ^([\\w\\s]*)\\.s(\\d{2}).*\\.avi$
+    pattern: ^([\w\s]*)\.s(\d{2}).*\.avi$
     folder: ~/Series/$1/Season $2/
