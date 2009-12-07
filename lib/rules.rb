@@ -48,8 +48,7 @@ module Organizer
 
     # Class methods
     class << self
-      def load(input=nil)
-        data = YAML.load(input)
+      def load(data=nil)
       
         if valid?(data)
           Rules.new(data)

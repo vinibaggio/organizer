@@ -14,3 +14,4 @@
 
 require File.expand_path(File.dirname(__FILE__) + "/../lib/organizer")
 
+#         @rules_file = File.expand_path(File.dirname(__FILE__) + "/rules.yml")

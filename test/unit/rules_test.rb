@@ -103,6 +103,6 @@ rules:
     folder: ~/$1/Season $2/
 
 DATA
-    Rules.load(data)
+    Rules.load(YAML.load(data))
   end
 end
