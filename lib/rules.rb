@@ -24,7 +24,7 @@ module Organizer
           matches << [rule[0], match]
         end
       end
-      matches.flatten! if matches.size == 1
+      matches.flatten! if !matches.nil? and matches.size == 1
       matches
     end
     
