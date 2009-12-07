@@ -40,7 +40,6 @@ rules:
   my_files:
     pattern: file(\\d).*txt
     folder: ~/Files
-
 DATA
 
     @organizer = OrganizerMatcher.new(rules_data)
@@ -49,6 +48,23 @@ DATA
       assert match.include?(["my_texts", "~/Texts"])
       assert match.include?(["my_files", "~/Files"])
     end
+  end
+  
+  def test_if_exception_raised_when_no_data
+    assert_raise(InvalidDataError) { OrganizerMatcher.new("")}
+  end
+  
+  def test_if_exception_raised_when_no_container
+    rules_data = <<DATA
+rules:
+  my_texts:
+    pattern: .*txt
+    folder: ~/Texts
+  my_files:
+    pattern: file(\\d).*txt
+    folder: ~/Files
+DATA
+    assert_raise(ContainerNotDefinedError) { OrganizerMatcher.new(rules_data)}
   end
   
 end

@@ -1,9 +1,9 @@
-require File.expand_path(File.dirname(__FILE__) + "/core_ext/string")
 require File.expand_path(File.dirname(__FILE__) + "/rules")
 
 module Organizer
   
-  class ContainerNotDefined < Exception; end
+  class ContainerNotDefinedError < Exception; end
+  class InvalidDataError < Exception; end
   
   class OrganizerMatcher
     
@@ -12,8 +12,11 @@ module Organizer
     def initialize(raw_data)
       rules_data = YAML.load(raw_data)
       
+      raise InvalidDataError if raw_data.nil? or raw_data.empty?
+      
+      raise ContainerNotDefinedError if rules_data["container_path"].nil?
       @container_path = File.expand_path(rules_data["container_path"])
-      raise ContainerNotDefined if @container_path.nil?
+      
       
       @rules = Organizer::Rules.load(rules_data)
       @container_files = Dir.glob("#{@container_path}/*").sort
