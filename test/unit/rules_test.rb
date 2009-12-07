@@ -62,7 +62,7 @@ DATA
   
   def test_if_matches_once
     rules = create_valid_rules
-    assert_equal ["my_pictures", "~/Pictures"], rules.match("File.jpg")
+    assert_equal [["my_pictures", "~/Pictures"]], rules.match("File.jpg")
   end
   
   def test_if_matches_multiple_times
@@ -72,8 +72,8 @@ DATA
   
   def test_if_matchs_substitute
     rules = create_valid_rules
-    assert_equal ["my_series", "~/Lost/Season 01/"], rules.match("Lost.s01e01.Bla.avi")
-    assert_equal ["my_series", "~/Prison Break/Season 02/"], rules.match("Prison Break.s02e01.Bla.avi")
+    assert_equal [["my_series", "~/Lost/Season 01/"]], rules.match("Lost.s01e01.Bla.avi")
+    assert_equal [["my_series", "~/Prison Break/Season 02/"]], rules.match("Prison Break.s02e01.Bla.avi")
   end
   
   def test_if_matches_valid_path

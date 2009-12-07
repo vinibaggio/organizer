@@ -16,11 +16,14 @@ module Organizer
       raise ContainerNotDefined if @container_path.nil?
       
       @rules = Organizer::Rules.load(rules_data)
-      @container_files = Dir.glob("#{@container_path}/*")
+      @container_files = Dir.glob("#{@container_path}/*").sort
     end
     
-    def method_name
-      
+    def each_match
+      @container_files.each do |file|
+        matches = @rules.match(file)
+        yield [file] + matches unless matches.nil?
+      end
     end
     
     
