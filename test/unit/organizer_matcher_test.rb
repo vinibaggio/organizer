@@ -1,15 +1,15 @@
 require File.expand_path(File.dirname(__FILE__) + "/../test_helper")
 
-require "organizer"
+require "organizer_matcher"
 include Organizer
 
-class TestOrganizer < Test::Unit::TestCase
+class TestOrganizerMatcher < Test::Unit::TestCase
   def test_set_default_values_for_roles_file_and_container_folder
     rules_data = <<-DATA
 container_path: ~/Container
     DATA
     
-    @organizer = Organizer::Organizer.new(rules_data)
+    @organizer = OrganizerMatcher.new(rules_data)
     assert_equal(File.expand_path("~/Container"), @organizer.container_path)
   end
   
@@ -23,7 +23,7 @@ rules:
 
 DATA
   
-    @organizer = Organizer::Organizer.new(rules_data)
+    @organizer = OrganizerMatcher.new(rules_data)
     @organizer.each_match do |match|
       assert_equal File.expand_path("./container") + "/file1.txt", match[0]
       assert_equal ["my_texts", "~/Texts"], match[1]
@@ -43,7 +43,7 @@ rules:
 
 DATA
 
-    @organizer = Organizer::Organizer.new(rules_data)
+    @organizer = OrganizerMatcher.new(rules_data)
     @organizer.each_match do |match|
       assert_equal File.expand_path("./container") + "/file1.txt", match[0]
       assert match.include?(["my_texts", "~/Texts"])

@@ -5,7 +5,7 @@ module Organizer
   
   class ContainerNotDefined < Exception; end
   
-  class Organizer
+  class OrganizerMatcher
     
     attr_reader :container_path
     
