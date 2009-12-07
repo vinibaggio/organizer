@@ -25,8 +25,8 @@ DATA
   
     @organizer = OrganizerMatcher.new(rules_data)
     @organizer.each_match do |match|
-      assert_equal File.expand_path("./container") + "/file1.txt", match[0]
-      assert_equal ["my_texts", "~/Texts"], match[1]
+      assert_equal(File.expand_path("./container") + "/file1.txt", match[0])
+      assert_equal({"my_texts" => "~/Texts"}, match[1])
     end
   end
 
@@ -45,8 +45,8 @@ DATA
     @organizer = OrganizerMatcher.new(rules_data)
     @organizer.each_match do |match|
       assert_equal File.expand_path("./container") + "/file1.txt", match[0]
-      assert match.include?(["my_texts", "~/Texts"])
-      assert match.include?(["my_files", "~/Files"])
+      assert match.include?({"my_texts" => "~/Texts"})
+      assert match.include?({"my_files" => "~/Files"})
     end
   end
   

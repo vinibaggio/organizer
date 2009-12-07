@@ -21,7 +21,7 @@ module Organizer
         match = perform_match(file, rule[1])
         unless match.nil?
           matches ||= []
-          matches << [rule[0], match]
+          matches << {rule[0], match}
         end
       end
       #matches.flatten! if !matches.nil? and matches.size == 1
